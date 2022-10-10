@@ -9,13 +9,11 @@ pipeline {
         }
       }
     }
-  }
 
-    stages {
-    stage('Test') {
+    stage('Build') {
       steps {
         script {
-          sh 'echo "Testing Stage"'
+          sh 'echo "Building Stage"'
         }
       }
     }
