@@ -1,33 +1,44 @@
 ---
 - hosts: db
-  name: Database assignment
-  import_playbook: ../static-assignments/deploy-mysql.yaml
+- name: Database assignment
+  ansible.builtin.import_playbook: ../static-assignments/deploy-mysql.yaml
 
-- hosts: Nginx
-  name: Nginx assignment
-  import_playbook: ../static-assignments/loadbalancers.yml
+- hosts: nginx
+- name: nginx assignment
+  ansible.builtin.import_playbook: ../static-assignments/loadbalancers.yml
 
-# # -------------------------------------
-# - name: include the env-vars playbook
-#   import_playbook: ../dynamic-assignments/env-vars.yml
-#   tags:
-#     - always
 
-# - name: Testing the env. vars
-#   hosts: web_servers
-#   tasks:
-#     - debug: 
-#         msg: " {{ enable_apache_lb }} "
 
-# # configure database server
-# - name: loading play for database server(s)
+# ---
+# - hosts: db
+#   name: Database assignment
 #   import_playbook: ../static-assignments/deploy-mysql.yaml
 
-# # configure webservers
-# - name: Webserver assignment
-#   import_playbook: ../static-assignments/uat-webservers.yml
+# - hosts: Nginx
+#   name: Nginx assignment
+#   import_playbook: ../static-assignments/loadbalancers.yml
 
-# configure loadbalancer
-- name: Loadbalancers assignment
-  import_playbook: ../static-assignments/loadbalancers.yml
-  when: load_balancer_is_required
+# # # -------------------------------------
+# # - name: include the env-vars playbook
+# #   import_playbook: ../dynamic-assignments/env-vars.yml
+# #   tags:
+# #     - always
+
+# # - name: Testing the env. vars
+# #   hosts: web_servers
+# #   tasks:
+# #     - debug: 
+# #         msg: " {{ enable_apache_lb }} "
+
+# # # configure database server
+# # - name: loading play for database server(s)
+# #   import_playbook: ../static-assignments/deploy-mysql.yaml
+
+# # # configure webservers
+# # - name: Webserver assignment
+# #   import_playbook: ../static-assignments/uat-webservers.yml
+
+# # configure loadbalancer
+# - name: Loadbalancers assignment
+#   import_playbook: ../static-assignments/loadbalancers.yml
+#   when: load_balancer_is_required
