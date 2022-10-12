@@ -2,6 +2,10 @@ pipeline {
   
   agent any
 
+  parameters {
+    string(name: 'inventory', defaultValue: 'dev',  description: 'This is the inventory file for the environment to deploy configuration')
+  }
+
   environment {
     ANSIBLE_CONFIG="${WORKSPACE}/deploy/ansible.cfg"
   }
@@ -14,6 +18,12 @@ pipeline {
           }
         }
       }
+
+    stage('Checkout SCM') {
+      steps{
+      git branch: 'main', url: 'https://github.com/scholarship-task/ansible-capstone-project.git'
+      }
+    }
   }
 
   // stages {
