@@ -36,9 +36,7 @@ pipeline {
     stage('Run Ansible playbook') {
       steps {
         ansiblePlaybook credentialsId: 'dapetoo-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory/dev', playbook: 'playbooks/site.yaml'
+      }
     }
-    
-
   }
-
 }
