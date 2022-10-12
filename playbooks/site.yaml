@@ -1,32 +1,31 @@
 ---
-- name: Include dynamic variables
-  hosts: all
+- hosts: db
+- name: Database assignment
+  ansible.builtin.import_playbook: ../static-assignments/deploy-mysql.yaml
+  
+- hosts: Nginx
+- name: Nginx assignment
+  ansible.builtin.import_playbook: ../static-assignments/loadbalancers.yml
 
-- name: import the common playbook
-  import_playbook: ../static-assignments/common.yaml
-  tags:
-    - always
+# # -------------------------------------
+# - name: include the env-vars playbook
+#   import_playbook: ../dynamic-assignments/env-vars.yml
+#   tags:
+#     - always
 
+# - name: Testing the env. vars
+#   hosts: web_servers
+#   tasks:
+#     - debug: 
+#         msg: " {{ enable_apache_lb }} "
 
-# -------------------------------------
-- name: include the env-vars playbook
-  import_playbook: ../dynamic-assignments/env-vars.yml
-  tags:
-    - always
+# # configure database server
+# - name: loading play for database server(s)
+#   import_playbook: ../static-assignments/deploy-mysql.yaml
 
-- name: Testing the env. vars
-  hosts: web_servers
-  tasks:
-    - debug: 
-        msg: " {{ enable_apache_lb }} "
-
-# configure database server
-- name: loading play for database server(s)
-  import_playbook: ../static-assignments/deploy-mysql.yaml
-
-# configure webservers
-- name: Webserver assignment
-  import_playbook: ../static-assignments/uat-webservers.yml
+# # configure webservers
+# - name: Webserver assignment
+#   import_playbook: ../static-assignments/uat-webservers.yml
 
 # configure loadbalancer
 - name: Loadbalancers assignment
