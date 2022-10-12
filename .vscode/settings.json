@@ -1,0 +1,8 @@
+{
+    "yaml.schemas": {
+        "https://raw.githubusercontent.com/ansible/schemas/main/f/ansible-inventory.json": [
+            "file:///home/dapetoo/Learning/darey.io/ansible-capstone-project/inventory/dev.yaml",
+            "file:///home/dapetoo/Learning/darey.io/ansible-capstone-project/inventory/dev"
+        ]
+    }
+}
