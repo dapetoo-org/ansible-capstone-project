@@ -1,5 +1,5 @@
-# [tooling]
-# 172.31.19.233
+[tooling]
+172.31.19.233
 
 [todo]
 172.31.19.233
@@ -7,12 +7,27 @@
 [nginx]
 172.31.19.233
 
-[db:vars]
-ansible_user=ubuntu
-ansible_python_interpreter=/usr/bin/python3
+[artifactory]
+172.31.19.233
+
+[sonar]
+172.31.19.233
 
 [db]
 172.31.19.233
+
+[servers:children]
+nginx
+db
+sonar
+artifactory
+todo
+tooling
+
+
+[servers:vars]
+ansible_ssh_user=ubuntu
+ansible_python_interpreter=/usr/bin/python3
 
 # mail.example.com
 
