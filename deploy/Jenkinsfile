@@ -24,47 +24,15 @@ pipeline {
       git branch: 'main', url: 'https://github.com/scholarship-task/ansible-capstone-project.git'
       }
     }
+
+
+    stage('Prepare Ansible For Execution') {
+      steps {
+        sh 'echo ${WORKSPACE}' 
+        sh 'sed -i "3 a roles_path=${WORKSPACE}/roles" ${WORKSPACE}/deploy/ansible.cfg'  
+      }
+    }
+    
   }
 
-  // stages {
-  //   stage('Build') {
-  //     steps {
-  //       script {
-  //         sh 'echo "Building Stage"'
-  //       }
-  //     }
-  //   }
-
-  //   stage('Test') {
-  //     steps {
-  //       script {
-  //         sh 'echo "Testing Stage"'
-  //       }
-  //     }
-  //   }
-
-  //   stage('Package') {
-  //     steps {
-  //       script {
-  //         sh 'echo "Packaging Stage"'
-  //       }
-  //     }
-  //   }
-
-  //   stage('Deploy') {
-  //     steps {
-  //       script {
-  //         sh 'echo "Deployment Stage"'
-  //       }
-  //     }
-  //   }
-
-  //   stage('Clean-up') {
-  //     steps {
-  //       script {
-  //         sh 'echo "Clean up Stage"'
-  //       }
-  //     }
-  //   }
-  // }
 }
