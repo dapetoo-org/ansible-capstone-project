@@ -32,16 +32,16 @@ ansible_python_interpreter=/usr/bin/python3
 # mail.example.com
 
 # [nfs]
-# 172.31.16.26 ansible_ssh_user='ubuntu'
+# 172.31.19.233 ansible_ssh_user='ubuntu'
 
 # [webservers]
-# 172.31.16.26 ansible_ssh_user='ubuntu'
+# 172.31.19.233 ansible_ssh_user='ubuntu'
 
 # [db]
 # 172.31.19.233 ansible_ssh_user='ubuntu'
 
 # [lb]
-# 172.31.16.26 ansible_ssh_user='ubuntu'
+# 172.31.19.233 ansible_ssh_user='ubuntu'
 
 # [multi:children]
 # nfs
