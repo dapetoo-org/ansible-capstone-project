@@ -6,8 +6,9 @@
 - name: Loading play for database server(s)
   import_playbook: ../static-assignments/deploy-mysql.yaml
 
-- name: Database assignment
-  ansible.builtin.import_playbook: ../static-assignments/deploy-mysql.yaml
+- name: Artifactory Configuration
+  import_playbook: ../static-assignments/artifactory.yaml
+
 
 
 # - hosts: nginx

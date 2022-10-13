@@ -3,7 +3,7 @@ pentest-todo
 pentest-tooling
 
 [pentest-todo]
-<Pentest-for-Todo-Private-IP-Address>
+172.31.19.233
 
 [pentest-tooling]
-<Pentest-for-Tooling-Private-IP-Address>
+172.31.19.233
