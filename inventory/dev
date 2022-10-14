@@ -1,20 +1,20 @@
 [tooling]
-172.31.19.233
+172.31.17.194
 
 [todo]
-172.31.19.233
+172.31.17.194
 
 [nginx]
-172.31.19.233
+172.31.17.194
 
 [artifact_repository]
-172.31.19.233
+172.31.17.194
 
 [sonar]
-172.31.19.233
+172.31.17.194
 
 [db]
-172.31.19.233
+172.31.17.194
 
 [servers:children]
 nginx
@@ -32,16 +32,16 @@ ansible_python_interpreter=/usr/bin/python3
 # mail.example.com
 
 # [nfs]
-# 172.31.19.233 ansible_ssh_user='ubuntu'
+# 172.31.17.194 ansible_ssh_user='ubuntu'
 
 # [webservers]
-# 172.31.19.233 ansible_ssh_user='ubuntu'
+# 172.31.17.194 ansible_ssh_user='ubuntu'
 
 # [db]
-# 172.31.19.233 ansible_ssh_user='ubuntu'
+# 172.31.17.194 ansible_ssh_user='ubuntu'
 
 # [lb]
-# 172.31.19.233 ansible_ssh_user='ubuntu'
+# 172.31.17.194 ansible_ssh_user='ubuntu'
 
 # [multi:children]
 # nfs
