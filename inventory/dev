@@ -7,7 +7,7 @@
 [nginx]
 172.31.19.233
 
-[artifactory]
+[artifact_repository]
 172.31.19.233
 
 [sonar]
@@ -20,7 +20,7 @@
 nginx
 db
 sonar
-artifactory
+artifact_repository
 todo
 tooling
 
