@@ -38,5 +38,11 @@ pipeline {
         ansiblePlaybook credentialsId: 'dapetoo-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory/dev', playbook: 'playbooks/site.yaml'
       }
     }
+
+    stage('Clean Workspace after build'){
+        steps{
+          cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenUnstable: true, deleteDirs: true)
+        }
+      }
   }
 }
