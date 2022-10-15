@@ -1,0 +1,6 @@
+---
+- hosts: artifact_repository
+  name: Deploy Artifactory
+  become: true
+  roles:
+  - bbaassssiiee.artifactory
