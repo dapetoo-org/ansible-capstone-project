@@ -3,4 +3,4 @@
   name: Deploy Artifactory
   become: true
   roles:
-  - bbaassssiiee.artifactory
+  - jfrog-artifactory

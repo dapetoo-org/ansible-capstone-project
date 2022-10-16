@@ -1,2 +1,12 @@
 [artifact_repository]
-172.31.17.194
+172.31.27.168
+
+[servers:children]
+sonar
+artifact_repository
+
+
+
+[servers:vars]
+ansible_ssh_user=ec2-user
+ansible_python_interpreter=/usr/bin/python3
