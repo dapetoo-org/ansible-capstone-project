@@ -7,9 +7,6 @@
 [nginx]
 172.31.17.194
 
-[artifact_repository]
-172.31.17.194
-
 [sonar]
 172.31.17.194
 
