@@ -2,9 +2,9 @@
 - name: Include dynamic variables
   hosts: all
 
-# configure database server
-# - name: Loading play for database server(s)
-#   import_playbook: ../static-assignments/deploy-mysql.yaml
+configure database server
+- name: Loading play for database server(s)
+  import_playbook: ../static-assignments/deploy-mysql.yaml
 
 - name: Artifactory Configuration
   import_playbook: ../static-assignments/artifactory.yaml
