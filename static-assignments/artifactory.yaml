@@ -3,4 +3,4 @@
   name: Deploy Artifactory
   become: true
   roles:
-  - buluma.artifactory
+  - bbaassssiiee.artifactory
