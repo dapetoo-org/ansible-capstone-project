@@ -65,9 +65,13 @@
     - name: deploy the code
       ansible.builtin.copy:
         src: /home/ec2-user/var/lib/jenkins/workspace/php-todo_main/
-        dest: /var/www/html/
+        dest: /var/www/
         force: yes
         remote_src: yes
+
+    # - name: copy html content to one level up
+    #   become: true
+    #   command: cp -r /var/www/html/html/ /var/www/
 
     - name: remove nginx default page
       ansible.builtin.file:
