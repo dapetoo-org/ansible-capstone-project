@@ -1,8 +1,8 @@
 ---
-- name: install apache
+- name: Install Nginx
   become: true
   ansible.builtin.apt:
-    name: "httpd"
+    name: "nginx"
     state: present
 
 - name: install git
@@ -22,10 +22,10 @@
   become: true
   command: cp -r /var/www/html/html/ /var/www/
 
-- name: Start service httpd, if not started
+- name: Start service nginx, if not started
   become: true
   ansible.builtin.service:
-    name: httpd
+    name: nginx
     state: started
 
 - name: recursively remove /var/www/html/html/ directory
