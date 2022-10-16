@@ -7,8 +7,8 @@
 # - name: Loading play for database server(s)
 #   import_playbook: ../static-assignments/deploy-mysql.yaml
 
-- name: Artifactory Configuration
-  import_playbook: ../static-assignments/artifactory.yaml
+# - name: Artifactory Configuration
+#   import_playbook: ../static-assignments/artifactory.yaml
 
 
 
@@ -44,8 +44,8 @@
 # #   import_playbook: ../static-assignments/deploy-mysql.yaml
 
 # # # configure webservers
-# # - name: Webserver assignment
-# #   import_playbook: ../static-assignments/uat-webservers.yml
+- name: Webserver assignment to configure TODO Application
+  import_playbook: ../static-assignments/uat-webservers.yml
 
 # # configure loadbalancer
 # - name: Loadbalancers assignment

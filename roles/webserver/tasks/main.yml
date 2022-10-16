@@ -1,20 +1,20 @@
 ---
 - name: install apache
   become: true
-  ansible.builtin.yum:
+  ansible.builtin.apt:
     name: "httpd"
     state: present
 
 - name: install git
   become: true
-  ansible.builtin.yum:
+  ansible.builtin.apt:
     name: "git"
     state: present
 
 - name: clone a repo
   become: true
   ansible.builtin.git:
-    repo: https://github.com/scholarship-task/tooling
+    repo: https://github.com/scholarship-task/php-todo
     dest: /var/www/html
     force: yes
 
