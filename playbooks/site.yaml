@@ -2,7 +2,8 @@
 - name: Include dynamic variables
   hosts: all
 
-configure database server
+
+#configure database server
 - name: Loading play for database server(s)
   import_playbook: ../static-assignments/deploy-mysql.yaml
 
