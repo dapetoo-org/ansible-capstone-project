@@ -4,45 +4,125 @@
   hosts: todo
 
   tasks:
-    - name: Install Nginx
-      become: true
-      ansible.builtin.apt:
-        name: "nginx"
+    - name: install remi and rhel repo
+      ansible.builtin.yum:
+        name: 
+          - https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+          - dnf-utils
+          - http://rpms.remirepo.net/enterprise/remi-release-8.rpm
+        disable_gpg_check: yes
+
+    
+    - name: install httpd on the webserver
+      ansible.builtin.yum:
+        name: httpd
         state: present
 
-    - name: ensure nginx is started and enabled
+    - name: ensure httpd is started and enabled
       ansible.builtin.service:
-        name: nginx
+        name: httpd
+        state: started 
+        enabled: yes
+      
+    - name: install PHP
+      ansible.builtin.yum:
+        name:
+          - php 
+          - php-mysqlnd
+          - php-gd 
+          - php-curl
+          - unzip
+          - php-common
+          - php-mbstring
+          - php-opcache
+          - php-intl
+          - php-xml
+          - php-fpm
+          - php-json
+        enablerepo: php:remi-7.4
+        state: present
+    
+    - name: ensure php-fpm is started and enabled
+      ansible.builtin.service:
+        name: php-fpm
         state: started 
         enabled: yes
 
     - name: Download the artifact
       get_url:
         url: http://52.14.42.172:8082/artifactory/php-todo-app-artifactory/php-todo
-        dest: /home/ubuntu/
+        dest: /home/ec2-user/
         url_username: admin
         url_password: G5pSEzZApUqh!M_
 
 
     - name: unzip the artifacts
       ansible.builtin.unarchive:
-       src: /home/ubuntu/php-todo
-       dest: /home/ubuntu/
+       src: /home/ec2-user/php-todo
+       dest: /home/ec2-user/
        remote_src: yes
 
     - name: deploy the code
       ansible.builtin.copy:
-        src: /home/ubuntu/var/lib/jenkins/workspace/php-todo_main/
+        src: /home/ec2-user/var/lib/jenkins/workspace/php-todo_main/
         dest: /var/www/html/
         force: yes
         remote_src: yes
 
     - name: remove nginx default page
       ansible.builtin.file:
-        path: /etc/nginx/sites-enabled/default
+        path: /etc/httpd/conf.d/welcome.conf
         state: absent
 
-    - name: restart nginx
+    - name: restart httpd
       ansible.builtin.service:
-        name: nginx
+        name: httpd
         state: restarted
+# ---
+# - name: Deploying the PHP Applicaion to Dev Enviroment
+#   become: true
+#   hosts: todo
+
+#   tasks:
+#     - name: Install Nginx
+#       become: true
+#       ansible.builtin.apt:
+#         name: "nginx"
+#         state: present
+
+#     - name: ensure nginx is started and enabled
+#       ansible.builtin.service:
+#         name: nginx
+#         state: started 
+#         enabled: yes
+
+#     - name: Download the artifact
+#       get_url:
+#         url: http://52.14.42.172:8082/artifactory/php-todo-app-artifactory/php-todo
+#         dest: /home/ubuntu/
+#         url_username: admin
+#         url_password: G5pSEzZApUqh!M_
+
+
+#     - name: unzip the artifacts
+#       ansible.builtin.unarchive:
+#        src: /home/ubuntu/php-todo
+#        dest: /home/ubuntu/
+#        remote_src: yes
+
+#     - name: deploy the code
+#       ansible.builtin.copy:
+#         src: /home/ubuntu/var/lib/jenkins/workspace/php-todo_main/
+#         dest: /var/www/html/
+#         force: yes
+#         remote_src: yes
+
+#     - name: remove nginx default page
+#       ansible.builtin.file:
+#         path: /etc/nginx/sites-enabled/default
+#         state: absent
+
+#     - name: restart nginx
+#       ansible.builtin.service:
+#         name: nginx
+#         state: restarted
