@@ -45,7 +45,7 @@
 
 # # # configure webservers
 - name: Webserver assignment to configure TODO Application
-  import_playbook: ../static-assignments/uat-webservers.yml
+  import_playbook: ../static-assignments/deployment.yaml
 
 # # configure loadbalancer
 # - name: Loadbalancers assignment
