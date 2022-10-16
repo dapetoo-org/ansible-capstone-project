@@ -1,32 +1,32 @@
-[tooling]
-172.31.17.194
+# [tooling]
+# 172.31.17.194
 
-[todo]
-172.31.17.194
+# [todo]
+# 172.31.17.194
 
-[nginx]
-172.31.17.194
+# [nginx]
+# 172.31.17.194
 
-[sonar]
-172.31.17.194
+# [sonar]
+# 172.31.17.194
 
-[db]
-172.31.17.194
+# [db]
+# 172.31.17.194
 
 [artifact_repository]
-172.31.17.194
+172.31.27.168
 
 [servers:children]
-nginx
-db
-sonar
+# nginx
+# db
+# sonar
 artifact_repository
-todo
-tooling
+# todo
+# tooling
 
 
 [servers:vars]
-ansible_ssh_user=ubuntu
+ansible_ssh_user=ec2-user
 ansible_python_interpreter=/usr/bin/python3
 
 # mail.example.com
