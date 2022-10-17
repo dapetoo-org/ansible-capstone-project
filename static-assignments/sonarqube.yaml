@@ -1,0 +1,6 @@
+---
+- hosts: sonarqube
+  name: Deploy Sonarqube
+  become: true
+  roles:
+  - lrk.sonarqube
