@@ -49,6 +49,7 @@
         enabled: yes
 
     - name: Download the artifact
+      become: false
       get_url:
         url: http://52.14.42.172:8082/artifactory/php-todo-app-artifactory/php-todo
         dest: /home/ec2-user/
@@ -65,7 +66,7 @@
     - name: deploy the code
       ansible.builtin.copy:
         src: /home/ec2-user/var/lib/jenkins/workspace/php-todo_main/
-        dest: /var/www/
+        dest: /var/www/html/
         force: yes
         remote_src: yes
 
